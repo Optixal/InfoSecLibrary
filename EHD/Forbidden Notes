@@ -3,15 +3,15 @@
 
 
 Port Numbers:
-21, 20	FTP
-22		SSH
-23		Telnet
-25		SMTP
-80		HTTP
-110		POP3
-161		SNMP
-443		HTTPS
-3306	MySQL
+21, 20  FTP
+22		  SSH
+23      Telnet
+25		  SMTP
+80		  HTTP
+110		  POP3
+161		  SNMP
+443		  HTTPS
+3306	  MySQL
 
 
 
