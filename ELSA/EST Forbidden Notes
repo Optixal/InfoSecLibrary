@@ -1,0 +1,100 @@
+ELSA EST Forbidden Notes
+14 Feb 2016
+
+
+// Chapter 7 - Partitions and Filesystems
+
+
+PHYSICAL VOLUMES (partition) creation:
+fdisk <device> // n 1 1 +500M p l t w
+fdisk -l <device> // Max 4 partitions unless extended
+dd if=/dev/zero of=/swap bs=1024 count=100000 // Creates a swap file with 100000 counts of 1MB
+
+
+LOGICAL VOLUMES creation:
+yum install system-config-lvm or RHEL Packages
+System > Administration > Logical Volume Manager or system-config-lvm
+Uninitialized Entities > /dev/sdb > Partition > Initialize Entity > Create New Volume Group > Create New Logical Volume
+// Logical volumes will appear in /dev/mapper
+
+
+FILESYSTEM creation on a partition:
+mkfs -t <type> <device>
+mkswap <device>
+swapon
+
+
+MOUNT FILESYSTEM:
+mount <device> <location> // Location needs to be created
+cat /etc/fstab // Permanent mount
+<device> <location> <filesystem (ext3)> <options (defaults)> <backup (0)> <system check (0)>
+/dev/sdb1	/folder	ext3	defaults	0	0
+mount -a // Mount all devices specified in fstab
+umount // Unmount
+cat /proc/meminfo // check
+cat /proc/swaps // check
+
+
+FILESYSTEMS attached info:
+mount
+df -h
+dumpe2fs <device> // filesystem info
+e2label <device> [new name] // filesystem name
+fsck <device> // filesystem fix
+
+
+
+// Chapter 8 - LUKS Encryption
+
+
+CREATE ENCRYPTED partition:
+cryptsetup luksFormat /dev/sdb1
+cryptsetup luksOpen /dev/sdb1 unlocked // Opens the encrypted partition onto /dev/mapper/unlocked
+mkfs -t ext3 /dev/mapper/unlocked
+cryptsetup luksClose /dev/mapper/unlocked
+
+
+MOUNT ENCRYPTED partition:
+cryptsetup luksOpen /dev/sdb1 unlocked
+mount /dev/mapper/unlocked ~/mount_point
+umount ~/mount_point
+cryptsetup luksClose /dev/mapper/unlocked
+
+
+MOUNT ENCRYPTED partition PERMANENTLY:
+touch password.txt // Either specify new or existing password
+cat /etc/crypttab
+<unlocked> <encrypted partition> <password location>
+cat /etc/fstab
+<mapper/unlocked> <mount location> ext3 defaults 0 0
+cryptsetup luksAddKey <encrypted partition> <password location> // This adds a 2nd password (no need if password.txt is the existing)
+
+
+
+// Chapter 9 - Network Configurations
+
+
+cat /etc/services
+cat /etc/sysconfig/network
+cat /etc/hosts
+cat /etc/resolve.conf
+cat /etc/sysconfig/network-scripts/ifcfg-eth0
+cat /etc/sysconfig/network
+cat /etc/sysctl.conf
+cat /var/spool/mail/user
+
+netstat
+ifconfig
+ip
+hostname
+host
+ping
+traceroute
+mtr
+route
+arp -a
+ip route
+mail
+
+
+
