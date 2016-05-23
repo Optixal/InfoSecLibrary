@@ -196,6 +196,7 @@ nmap –sS 192.168.10.100     // TCP SYN scan, scans with SYN packets
 nmap -sT 192.168.10.100     // TCP connect() scan
 nmap -sV --version-intensity 9 -p 8075 192.168.10.100   // Deep scan for unknown service on a specific port 8075, max intensity of 9 (all protocols in existence)
 nmap -O 192.168.10.100      // OS scan
+// More Below
 
 // Banner Grabbing with Telnet
 telnet 192.168.6.212 80
@@ -206,3 +207,83 @@ HOST: 127.0.0.1             // And press enter again
 nc 192.168.6.212 80
 OPTIONS / HTTP/1.1
 HOST: 127.0.0.1
+
+
+
+// 16 May 2016
+
+// Finding IP of a host from a DNS server
+dig google.com							// IP found in "ANSWER SECTION"
+dig –t ns nintendo.com					// Retrieves more information about name servers of the host
+dig -t mx nintendo.com					// Retreives more information about mail servers of the host
+dig @192.168.6.211 server.example.com	// Find ip of server.example.com from DNS server 192.168.6.211 
+host server.example.com 192.168.6.211	// ^
+host 205.166.76.2						// Looks for hostname for this IP
+nslookup								// Windows
+
+// DNS Zone Transfer
+dig @192.168.6.211 example.com axfr		// Lists all DNS records of a certain DNS server
+
+// Paros (used for trapping HTTP packets by acting as a proxy)
+// Set up proxy on browser, point to localhost:8080
+// Browse websites
+// Paros captures Requests/Responses/Banners
+
+// Trap > Tick Trap Response // Traps HTTP responses to your browser, thus you can read it, make it continue or drop it
+
+
+
+// 18 May 2016
+
+// Nmap Scans that Identifies TCP Ports
+-sS		- TCP SYN Scan (Stealthy, TCP half connection, no logging) (default)
+-sT		- TCP connect() Scan (Not Stealthy, establishes a full TCP connection)
+-sF		- TCP FIN Scan (Stealthy, 1 FIN packet sent and expect 1 RST to be received)
+  -sF	- Xmas Tree Scan
+  -sN	- Null Scan
+-sA		- TCP ACK Scan (for firewall detection)
+-sI		- Idlescan
+-b		- FTP Bounce Attack
+
+// Nmap Scans that Do Not Identify TCP Ports
+-sU		- UDP Scan, one and only
+-sW		- Window Scan
+-sP		- Pint Scan (Simple way of checking for live hosts)
+-sV		- Version Scan of Services (--version-intensity [0-9])
+-sO		- IP Scan
+
+// Nmap Useful Commands
+nmap -O [ip]									// Scans for operating system running (use --osscan-guess for more aggressive scan)
+nmap -sV --version-intensity 9 [ip] -p [ports]	// Scans for unknown services on unknown ports with max intensity, ports optional
+nmap -A	[ip]									// Aggressive scan, includes OS detection and service scan (-O and -sV)
+nmap -sS -sU -p- [ip]							// Scans all TCP and UDP ports
+nmap -sn [ip range]								// Scans a network for online hosts
+nmap -sL [ip range]								// Scans a network for all hostnames (or single target)
+nmap -F -T4 [ip]								// Fast, quick and dirty scan for open ports
+nmap --script=http-title [ip]					// Gathers HTTP page titles on web servers
+nmap --script=http-headers [ip]					// Gathers HTTP headers on web servers (banner grabbing) (faster than the other banner grabbing methods)
+nmap --script=http-enum [ip]					// Gathers HTTP directories on web servers
+
+/*	Optional flags, add to taste:
+	-T4					// Scan speed, T4 produces faster, more aggressive scans, -T5 is too insanely fast)
+	-v					// Verbose mode
+	--script=[script]	// List of scripts here: locate nse | grep script 
+
+/*	Port Scanning to find open/closed ports
+	-sS port scan sends a [SYN] packet to target, trying to establish a 3-way handshake (half 3-way handshake), stealthy
+	If port open, target sends back [SYN, ACK], thinking that scanner is trying to est a legit connection, showing that the port is accepting connections and is open, then scanner resets it with [RST], and does NOT complete the handshake (unlike -sT scan)
+	If port close, target sends back [SYN, RST], indicating that the target is not accepting connections  */
+
+/*	Exercise 2
+	When the system at 192.168.6.211 receives an illegal or unexpected packet, it will replay with an ICMP Destination Unreachable packet
+	When you scan the other system 192.168.6.212, if you don't get any response, the port is probably blocked by firewall.
+	
+	Exercise 4
+	UDP Port 53 is open on 192.168.6.211  */
+
+// Ping Sweeps with Forged Source IP Address
+hping3 –c 2 –-icmp –a 192.168.20.20 192.168.10.100	// Sends 2 forged ICMP ping packets to 10.100 with the fake address of 20.20
+
+
+
+
