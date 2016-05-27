@@ -688,9 +688,7 @@ Edit > Find Packet > String > Filter: Dinosaur > Packet Bytes
 
 // netstat /?
 // netstat -an      // All connections and listening ports with address:port
-// netstat -ano     // Same as -an with owning process ID associated with each connection, 
-
-works well with Processes (PID) in Task Manager to find which process has a connection
+// netstat -ano     // Same as -an with owning process ID associated with each connection, works well with Processes (PID) in Task Manager to find which process has a connection
 // netstat -anb     // Similar as -ano, showing executables associated with each connection
 
 
