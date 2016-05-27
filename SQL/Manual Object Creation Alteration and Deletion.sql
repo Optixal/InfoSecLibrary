@@ -83,4 +83,28 @@ drop database testDB
 
 -- Compaction of Database
 
-DBCC ShrinkDatabase (‘testDB’, 25) -- Shrink database by 25%
+DBCC ShrinkDatabase (‘testDB’, 25)	-- Shrink database by 25%
+
+
+
+-- Creation and Assignment of Schema
+
+create schema schema_1
+authorization dbo			-- Assign owner of schema
+create table Saler			-- Assign table to schema
+  (OrderNo     int,
+  OrderDate   datetime,
+  CustomerNumber  int )
+go
+grant select on Saler to harry		-- Grant permission of table to people
+
+
+
+-- Alteration of Schema Ownership
+alter authorization on schema::schema_1 to Tom
+
+
+
+-- Deletion of Schema
+
+drop schema schema_1
