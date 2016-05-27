@@ -812,16 +812,16 @@ HOST: 127.0.0.1
 // 16 May 2016
 
 // Finding IP of a host from a DNS server
-dig google.com							// IP found in "ANSWER SECTION"
+dig google.com						// IP found in "ANSWER SECTION"
 dig –t ns nintendo.com					// Retrieves more information about name servers of the host
 dig -t mx nintendo.com					// Retreives more information about mail servers of the host
-dig @192.168.6.211 server.example.com	// Find ip of server.example.com from DNS server 192.168.6.211 
-host server.example.com 192.168.6.211	// ^
-host 205.166.76.2						// Looks for hostname for this IP
-nslookup								// Windows
+dig @192.168.6.211 server.example.com			// Find ip of server.example.com from DNS server 192.168.6.211 
+host server.example.com 192.168.6.211			// ^
+host 205.166.76.2					// Looks for hostname for this IP
+nslookup						// Windows
 
 // DNS Zone Transfer
-dig @192.168.6.211 example.com axfr		// Lists all DNS records of a certain DNS server
+dig @192.168.6.211 example.com axfr			// Lists all DNS records of a certain DNS server
 
 // Paros (used for trapping HTTP packets by acting as a proxy)
 // Set up proxy on browser, point to localhost:8080
@@ -852,21 +852,21 @@ dig @192.168.6.211 example.com axfr		// Lists all DNS records of a certain DNS s
 -sO		- IP Scan
 
 // Nmap Useful Commands
-nmap -O [ip]									// Scans for operating system running (use --osscan-guess for more aggressive scan)
+nmap -O [ip]					// Scans for operating system running (use --osscan-guess for more aggressive scan)
 nmap -sV --version-intensity 9 [ip] -p [ports]	// Scans for unknown services on unknown ports with max intensity, ports optional
-nmap -A	[ip]									// Aggressive scan, includes OS detection and service scan (-O and -sV)
-nmap -sS -sU -p- [ip]							// Scans all TCP and UDP ports
-nmap -sn [ip range]								// Scans a network for online hosts
-nmap -sL [ip range]								// Scans a network for all hostnames (or single target)
-nmap -F -T4 [ip]								// Fast, quick and dirty scan for open ports
-nmap --script=http-title [ip]					// Gathers HTTP page titles on web servers
-nmap --script=http-headers [ip]					// Gathers HTTP headers on web servers (banner grabbing) (faster than the other banner grabbing methods)
-nmap --script=http-enum [ip]					// Gathers HTTP directories on web servers
+nmap -A	[ip]					// Aggressive scan, includes OS detection and service scan (-O and -sV)
+nmap -sS -sU -p- [ip]				// Scans all TCP and UDP ports
+nmap -sn [ip range]				// Scans a network for online hosts
+nmap -sL [ip range]				// Scans a network for all hostnames (or single target)
+nmap -F -T4 [ip]				// Fast, quick and dirty scan for open ports
+nmap --script=http-title [ip]			// Gathers HTTP page titles on web servers
+nmap --script=http-headers [ip]			// Gathers HTTP headers on web servers (banner grabbing) (faster than the other banner grabbing methods)
+nmap --script=http-enum [ip]			// Gathers HTTP directories on web servers
 
 /*	Optional flags, add to taste:
 	-T4					// Scan speed, T4 produces faster, more aggressive scans, -T5 is too insanely fast)
 	-v					// Verbose mode
-	--script=[script]	// List of scripts here: locate nse | grep script 
+	--script=[script]			// List of scripts here: locate nse | grep script 
 
 /*	Port Scanning to find open/closed ports
 	-sS port scan sends a [SYN] packet to target, trying to establish a 3-way handshake (half 3-way handshake), stealthy
@@ -883,8 +883,3 @@ nmap --script=http-enum [ip]					// Gathers HTTP directories on web servers
 // Ping Sweeps with Forged Source IP Address
 hping3 –c 2 –-icmp –a 192.168.20.20 192.168.10.100	// Sends 2 forged ICMP ping packets to 10.100 with the fake address of 20.20
 
-
-
-
-
-asd
