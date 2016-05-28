@@ -2,7 +2,6 @@
 
 VERSION=1.2
 
-
 function netcatinput {
 	echo "OPTIONS / HTTP/1.1"
 	echo -e "HOST: 127.0.0.1\n\n"
@@ -26,18 +25,15 @@ clear
 
 while true
 do
-
-
-cat << "EOF"
- ____ ___  ___ _ _ _ ____ _                                        
- [__] |--'  |  | _X_ |--| |___                                     
- ___  ____ __ _ __ _ ____ ____   ____ ____ ____ ___  ___  ____ ____
- |==] |--| | \| | \| |=== |--<   |__, |--< |--| |==] |==] |=== |--<
-
-EOF
-
-echo -e "HTTP Web Server Banner Grabber\nMade by Shawn Pang, DISM SP\nVersion $VERSION | 28 May, 2016\n"
-
+	cat << "EOF"
+	 ____ ___  ___ _ _ _ ____ _                                        
+	 [__] |--'  |  | _X_ |--| |___                                     
+	 ___  ____ __ _ __ _ ____ ____   ____ ____ ____ ___  ___  ____ ____
+	 |==] |--| | \| | \| |=== |--<   |__, |--< |--| |==] |==] |=== |--<
+	
+	EOF
+	
+	echo -e "HTTP Web Server Banner Grabber\nMade by Shawn Pang, DISM SP\nVersion $VERSION | 28 May, 2016\n"
 
 	echo -e "[1]\t-\tSimple Banner Grab"
 	echo -e "[2]\t-\tFull Banner Grab (Longer)"
@@ -57,7 +53,7 @@ echo -e "HTTP Web Server Banner Grabber\nMade by Shawn Pang, DISM SP\nVersion $V
 				
 				netcatinput | netcat -q 2 $HOST 80 | cat | grep -E 'Server:|Powered-By:' | color REDBOLD
 				
-				echo ""
+				echo "\n"
 				i=1
 				sleep 1
 				;;
