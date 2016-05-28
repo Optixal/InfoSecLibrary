@@ -36,7 +36,8 @@ EOF
 	echo -e "HTTP Web Server Banner Grabber\nMade by Shawn Pang, DISM SP\nVersion $VERSION | 28 May, 2016\n"
 
 	echo -e "[1]\t-\tSimple Banner Grab"
-	echo -e "[2]\t-\tFull Banner Grab (Longer)"
+	echo -e "[2]\t-\tSimple Banner Grab (Loop and Output)"
+	echo -e "[3]\t-\tFull Banner Grab (Longer)"
 	echo -e "[C]\t-\tClear Screen (Removes Past Grabs)"
 	echo -e "[Q]\t-\tExit\n"
 	echo -e "Press a key to continue\n"
@@ -57,8 +58,31 @@ EOF
 				i=1
 				sleep 1
 				;;
-			2)
-				echo -e "Selected: [2] Full Banner Grab (Longer)"
+			2)	
+				echo -e "Selected: [2] Simple Banner Grab (Loop and Output)"
+				echo -n "Enter output file name: "
+				read OUTPUTFILE
+
+				while true
+				do			
+					echo -n "Enter target host (enter q to quit): "
+					read HOST
+					if [ "$HOST" = "q" ]
+					then
+						i=1					
+						break
+					fi
+					echo -e "\nGrabbing $HOST's banner...\n"
+				
+					echo "$HOST:" >> $OUTPUTFILE
+					netcatinput | netcat -q 2 $HOST 80 | cat | grep -E 'Server:|Powered-By:' | tee -a $OUTPUTFILE
+					echo "" >> $OUTPUTFILE		
+				
+					echo ""
+				done
+				;;			
+			3)
+				echo -e "Selected: [3] Full Banner Grab (Longer)"
 				echo -n "Enter target host: "
 				read HOST
 				echo -e "\nGrabbing $HOST's banner...\n"
