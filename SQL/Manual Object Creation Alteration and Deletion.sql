@@ -25,7 +25,15 @@ log on
 	maxsize = 10MB,
 	filegrowth = 1MB	)
 
+-- With Containment
 
+use master go
+create database testDB
+containment = partial
+
+use master go
+alter database testDB
+set containment = partial
 
 -- Table Creation
 
