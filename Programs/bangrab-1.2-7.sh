@@ -41,7 +41,7 @@ echo -e "HTTP Web Server Banner Grabber\nMade by Shawn Pang, DISM SP\nVersion $V
 
 	echo -e "[1]\t-\tSimple Banner Grab"
 	echo -e "[2]\t-\tFull Banner Grab (Longer)"
-	echo -e "[C]\t-\tClear Screen (Removes Past Grabs"
+	echo -e "[C]\t-\tClear Screen (Removes Past Grabs)"
 	echo -e "[Q]\t-\tExit\n"
 	echo -e "Press a key to continue\n"
 	i=0
