@@ -16,6 +16,8 @@ WITH DEFAULT_SCHEMA = SingPoly
 CREATE USER alice
 WITH PASSWORD = '12345678', DEFAULT_SCHEMA = SingPoly
 
+EXEC sp_addrolemember 'db_owner', 'willy'
+
 
 
 -- Alteration of SQL Server Login
