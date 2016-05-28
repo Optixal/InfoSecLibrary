@@ -377,6 +377,16 @@ uname -a
 cat /proc/cpuinfo
 cat /proc/meminfo
 
+ps aux // List processes
+ps -ef
+jobs
+fg
+top
+pstree
+nice
+renice
+kill (2 - interrupt Ctrl-C, 9 - force termination, 15 - request termination, 20 - suspend Ctrl-Z)
+
 // Chapter 11 - 27 Jan 2016
 // rpm installs packages one by one
 cd /var/lib/rpm // Place where rpm list is stored
