@@ -53,7 +53,7 @@ EOF
 				
 				netcatinput | netcat -q 2 $HOST 80 | cat | grep -E 'Server:|Powered-By:' | color REDBOLD
 				
-				echo "\n"
+				echo -e "\n"
 				i=1
 				sleep 1
 				;;
