@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=1.2
+VERSION=1.3
 
 function netcatinput {
 	echo "OPTIONS / HTTP/1.1"
