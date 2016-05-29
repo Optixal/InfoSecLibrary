@@ -21,6 +21,8 @@ FROM Loan
 WHERE Cust_ID = @ID
 
 EXEC OutstandingAmt 'C9934'
+-- OR --
+EXEC OutstandingAmt @ID = 'C9934'
 
 CREATE TRIGGER Loan_Updated_Alert
 ON Loan
