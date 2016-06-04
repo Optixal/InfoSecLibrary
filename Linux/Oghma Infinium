@@ -451,8 +451,19 @@ atq // List queue
 at -f /root/bin/at_script.sh now + 2 min
 
 crontab -l // List the crontab file
-crontab -e // Edit the crontab file (* * * * * export DISPLAY=:0.0 ; zenity --info --text "Hello" --title "Title") (every min, popup)
+crontab -e // Edit the crontab file
 crontab -r // Remove the crontab file
+*     *     *   *    *        command to be executed
+-     -     -   -    -
+|     |     |   |    |
+|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+|     |     |   +------- month (1 - 12)
+|     |     +--------- day of        month (1 - 31)
+|     +----------- hour (0 - 23)
++------------- min (0 - 59)
+// * * * * * export DISPLAY=:0.0 ; zenity --info --text "Hello" --title "Title" // every min, popup
+// */15 // Every 15 minutes, not just at .15
+// 10,50 // Every .10 and .50 
 
 cat /etc/ntp.conf // Time server config
 System > Administrator > Date & Time > Sync > Tick all options (even advanced)
