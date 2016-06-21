@@ -1,0 +1,58 @@
+# Nmap Scans that Identifies TCP Ports
+-sS		- TCP SYN Scan (Stealthy, TCP half connection, no logging) (default)
+-sT		- TCP connect() Scan (Not Stealthy, establishes a full TCP connection)
+-sF		- TCP FIN Scan (Stealthy, 1 FIN packet sent and expect 1 RST to be received, exploits RFC 793, if a packet does not have the flags SYN, RST or ACK and is sent to closed port, RST is returned, and if it is opened, nothing is returned) (Sneak through firewalls, but does not work with Windows)
+  -sX		- Xmas Tree Scan (FIN, PSH and URG flags)
+  -sN		- Null Scan (No flags)
+-sA		- TCP ACK Scan (for firewall detection)
+-sI		- Idlescan (Zombie scan, extraordinarily stealthy, helps identifying the IP-based trust relationships between machines) (perhaps determine how the firewall is configured) (marks the poor zombie machine as the attacker)
+-b		- FTP Bounce Attack (check whether FTP server is vulnerable first with -sV -sC)
+
+# Nmap Scans that Do Not Identify TCP Ports
+-sU		- UDP Scan, one and only
+-sn / sP	- Ping Scan (Simple way of checking for live hosts)
+-sV		- Version Scan of Services (--version-intensity [0-9])
+-sW		- Window Scan
+-sO		- IP Scan
+
+# Nmap Useful Commands
+nmap -T4 -n -sn -oG - [ip range]		# Ping scan entire network, sn - scan none
+nmap -T4 -n -p [port] -oG - [ip range]		# Scan a certain port on every machine in a network (for clean output, append: | grep -v \# | awk '{print $2}')
+nmap -F -T4 -Pn -n [ip]				# Fast, quick and dirty scan for common ports
+nmap -A	[ip]					# Aggressive scan, includes OS detection and service scan (-O and -sV)
+nmap -O [ip]					# Scans for operating system running (use --osscan-guess for more aggressive scan)
+nmap -Pn [ip]					# Skips host discovery, treats target (or rarely targets) as online, Pn - ping none
+nmap -sV --version-intensity 9 [ip] -p [ports]	# Scans for service versions (use --version-intensity 9 for best results)
+nmap -sS -sU -p- [ip]				# Scans all TCP and UDP ports
+nmap -sL [ip range]				# Scans a network for all hostnames (or single target)
+nmap -O -v					# Find a good idle zombie (check IP ID Sequence Generation: Incremental or Broken little-endian incremental) (check TCP sequence prediction too)
+nmap --script=http-title [ip]			# Gathers HTTP page titles on web servers
+nmap --script=http-headers [ip]			# Gathers HTTP headers on web servers (banner grabbing) (faster than the other banner grabbing methods)
+nmap --script=http-enum [ip]			# Gathers HTTP directories on web servers
+
+/*	Optional flags, add to taste:
+	-T4					# Scan speed, T4 produces faster, more aggressive scans, -T5 is too insanely fast, -T0 and -T1 is for IDS evasion)
+	-n					# No reverse DNS resolution, much faster
+	-Pn					# No ping, skips host discovery, scans all no matter what
+	-oG -					# Grepable Output	
+	-iL					# Input list of hosts	
+	--reason / -d				# Reason on why nmap chose to label a port in a certain way	
+	--script=[script] / -sC			# List of scripts here: locate nse | grep script 
+	-v					# Verbose mode
+	-f					# Fragmentation mode, fragments scan packets to multiple packets	
+	-sV -sC					# Scan for service version, and run common scripts against it
+
+/*	Port Scanning to find open/closed ports
+	-sS port scan sends a [SYN] packet to target, trying to establish a 3-way handshake (half 3-way handshake), stealthy
+	If port open, target sends back [SYN, ACK], thinking that scanner is trying to est a legit connection, showing that the port is accepting connections and is open, then scanner resets it with [RST], and does NOT complete the handshake (unlike -sT scan)
+	If port close, target sends back [SYN, RST], indicating that the target is not accepting connections  */
+
+/*	Filtered (firewall) vs Closed Ports:
+	Filtered	-	No Response
+	Closed		-	RST
+
+	Considerations when scanning many ports:
+	Blacklist Firewall	-	Receive packets from most ports (RST closed or SYN/ACK open), but a few with no response (filtered)
+	Whitelist Firewall	-	Receive no responses (firewall) from most of the ports, but a few SYN/ACK packets back (open)
+	No Firewall		-	Receive packets	from all ports (RST closed or SYN/ACK open)	*/
+
