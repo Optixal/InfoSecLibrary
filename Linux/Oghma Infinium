@@ -921,3 +921,18 @@ nmap --script=http-enum [ip]			# Gathers HTTP directories on web servers
 # Ping Sweeps with Forged Source IP Address
 hping3 –c 2 –-icmp –a 192.168.20.20 192.168.10.100	# Sends 2 forged ICMP ping packets to 10.100 with the fake address of 20.20
 
+
+
+# 23 June 2016
+
+sed 's\...\...\' == sed 's|...|...|' == sed 's:...:...:'		# Any deliminator can be used
+sed 's|\(PermitRootLogin\) *.*|\1 yes|' /etc/ssh/sshd_config		# Changes everything after PermitRootLogin to yes
+sed 's|\(PermitRootLogin\) no|\1 yes|' /etc/ssh/sshd_config		# Changes no to yes
+
+# 25 June 2016
+
+# For Fun
+cowsay
+cmatrix -bC cyan
+echo Hello World | netcat virtualhacker.net 9999
+lolcat -as 200

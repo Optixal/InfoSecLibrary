@@ -1,0 +1,5 @@
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab smartindent
+set nocompatible ruler laststatus=2 showcmd showmode number
+set incsearch ignorecase smartcase hlsearch
+set nowrap
+syntax on

