@@ -82,3 +82,10 @@ SELECT * FROM student
 UPDATE student
 SET GPA = 3.00
 WHERE studID = 'S123'
+
+
+-- TRIGGER THAT PREVENT DROPPING OF TABLES
+CREATE TRIGGER Prevent_Table_Drop ON DATABASE
+FOR Drop_Table
+AS
+PRINT 'Tables cannot be dropped!'
