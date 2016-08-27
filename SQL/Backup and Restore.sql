@@ -1,50 +1,77 @@
 --
+-- ADD BACKUP MEDIA
+--
+
+exec sp_addeumpdevice [type], [name], [location]
+exec sp_addumpdevice 'disk', 'SPBackupDevice', 'D:\SPBackup\SingPoly.bak'
+
+--
 -- BACKUP
 --
 
+-- FORMAT
+Backup [ Database | Log ] database_name
+-- For Filegroup/File Backup -- [ File | Filegroup = location ]
+To [ backup_media | disk ] = location
+[ With 
+     [ NO_TRUNCATE]
+     [ NOINIT | INIT | FORMAT ]
+     [ DIFFERENTIAL ]
+     [ NAME ] -- optional name of backup
+]
+
 -- FULL BACKUP
 
-backup database SingPoly
-to SPBackupDevice
-with name = 'SingPoly Full Backup', init
+Backup Database SingPoly
+To  SPBackupDevice
+With init
 
 -- DIFFERENTIAL BACKUP
 
 backup database SingPoly
 to SPBackupDevice
-with differential, name = 'Differential Backup of SingPoly', noinit
+with differential, noinit
 
 -- TRANSACTION LOG BACKUP
 
 backup log SingPoly
 to SPBackupDevice
-with name = 'Transaction Log Backup of SingPoly', noinit
+with no_truncate
 
 -- FILEGROUP BACKUP
 
 backup database SingPoly
 filegroup = 'SP_FileGrp'
 to SPBackupDevice
-with name = 'File Group Backup of SingPoly', noinit
 
 --
 -- RESTORATION
 --
 
+-- FORMAT
+Restore [ Database | Log ] [ database_name ]
+-- For Filegroup/File Restoration -- [ File | Filegroup = location ]
+From [ backup_media | disk = location ] ]
+[ With 
+     [ [,] File = File_number ]
+     [ [,] Recovery | NoRecovery ]
+     [ [,] StopAt = date_time ]
+]
+
 -- COLLECT LOG BEFORE DATABASE IS DOWN
 Backup Log SingPoly
 To SPBackupDevice
-With   Norecovery, No_Truncate
+With No_Truncate
 
 -- FULL RESTORE
 Restore Database SingPoly
 From SPBackupDevice
-With File= 1, Partial, Norecovery
+With File = 1, Norecovery
 
 -- DIFFERENTIAL RESTORE
 Restore Database SingPoly
 From SPBackupDevice
-With File= 2, Partial, Norecovery
+With File = 2, Norecovery
 
 -- FILEGROUP RESTORE
 Restore Database SingPoly
@@ -55,9 +82,9 @@ With File = 4, Norecovery
 -- LOG RESTORE
 Restore Log SingPoly
 From SPBackupDevice
-With File= 3, Recovery
+With File = 3, NoRecovery
 
 -- TAIL LOG RESTORE
 Restore Log SingPoly
 From SPBackupDevice
-With File= 5, Recovery
+With File = 5, Recovery
