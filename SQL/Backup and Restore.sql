@@ -2,7 +2,7 @@
 -- ADD BACKUP MEDIA
 --
 
-exec sp_addeumpdevice [type], [name], [location]
+exec sp_addumpdevice [type], [name], [location]
 exec sp_addumpdevice 'disk', 'SPBackupDevice', 'D:\SPBackup\SingPoly.bak'
 
 --
