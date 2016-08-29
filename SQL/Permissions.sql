@@ -14,6 +14,9 @@ WITH GRANT OPTION
 -- Grant Object Permission on Schema
 GRANT CONTROL ON SCHEMA::Sales TO Mary
 
+-- Grant Object Permission on Stored Procedure
+GRANT EXECUTE ON InsertCourse TO Mary
+
 
 
 -- Deny Statement Permission
