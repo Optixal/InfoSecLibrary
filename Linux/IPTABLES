@@ -1,6 +1,14 @@
-# Flushing all rules
-iptables -F
+# Reset iptables
+# Tables located at /proc/net/ip_tables_names
+iptables -F # -t [table]
 iptables -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+# OR
+service iptables stop
+iptables -F
+service iptables start
 
 
 

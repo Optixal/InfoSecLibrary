@@ -1,0 +1,32 @@
+# OpenShift
+Create OpenShift account
+Create a new gear
+Add Tomcat 7, MySQL 5.5, phpMyAdmin 4.0
+Add ssh key to account
+
+# MySQL Workbench
+Export entire schema into single dump file (no create database)
+
+# OpenShift MySQL
+Login into phpMyAdmin with username and password provided
+Select import, choose dump file
+Start import with default settings
+
+# Eclipse
+Install JRE 7 (compulsory) and configure it into build directory
+Duplicate project to upload
+Configure Java System Library to use JRE 7
+Configure Java Compiler to user 1.7 standards
+Configure Project Facets > Java to 1.7
+Change model.DBConnection to OpenShift MySQL credentials and IP
+Clean and build project
+Right click project and export as ROOT.war
+
+# Kali Linux
+Prepare id_rsa and id_rsa.pub ssh keys, and ssh-add
+Transfer ROOT.war into Kali
+scp ROOT.war [IP]:~/app-root/dependencies/jbossews/webapps/.
+
+# Done
+Visit live OpenShift website to ensure everything is working.
+

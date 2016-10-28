@@ -1,0 +1,27 @@
+# Hex dump a File
+xxd [file]
+
+# Check whether there is mulitple file types within a file
+binwalk [file]
+
+# Check file type of a file using the header
+file [file]
+
+
+## Auto Extraction
+
+# Auto extract all file types from a file
+binwalk --dd='.*' [file]
+
+# Extract JPEG images from a file
+binwalk --dd='jpeg:jpg' [file]
+
+
+## Manual Extraction
+
+# Get decimal offset from hex (count each hex before the signature starting with 0)
+prinf '%d\n' 0x000127d4
+
+# Extract file using offset
+dd if=[file] bs=1 skip=[dec offset] of=[output]
+

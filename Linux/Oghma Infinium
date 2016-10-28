@@ -834,8 +834,12 @@ HOST: 127.0.0.1
 dig google.com						# IP found in "ANSWER SECTION"
 dig –t ns nintendo.com					# Retrieves more information about name servers of the host
 dig -t mx nintendo.com					# Retreives more information about mail servers of the host
-dig @192.168.6.211 server.example.com			# Find ip of server.example.com from DNS server 192.168.6.211 
-host server.example.com 192.168.6.211			# ^
+
+dig @[DNS Server] [Domain/Hostname Entry]
+dig @192.168.6.211 server.example.com			# Find ip of server.example.com from DNS server 192.168.6.211
+dig axfr @nsztm1.diji.ninja zonetransfer.me             # Zone transfer - retrieve all transfers (axfr) for the domain name entry in DNS server
+
+host server.example.com 192.168.6.211			# Same as dig @[DNS] [Entry]
 host 205.166.76.2					# Looks for hostname for this IP
 nslookup						# Windows
 

