@@ -85,7 +85,82 @@ WHERE studID = 'S123'
 
 
 -- TRIGGER THAT FIRES WHEN A TABLE IS DROPPED
+
 CREATE TRIGGER Print_Table_Drop ON DATABASE
 FOR Drop_Table
 AS
 PRINT 'Table dropped!'
+
+-- DECLARE AND SET
+
+create procedure Validate_Student
+-- Add parameters for procedures
+@AdmNo int
+as
+begin
+	declare
+	@AdmNoBackup int,
+	@firstDigit int,
+	@secondDigit int,
+	@thirdDigit int,
+	@fourthDigit int,
+	@fifthDigit int,
+	@checkDigit int
+
+	set @AdmNoBackup = @AdmNo
+
+	set @firstDigit = @AdmNo / 10000
+	set @AdmNo = @AdmNo - (@firstDigit * 10000)
+
+	set @secondDigit = @AdmNo / 1000
+	set @AdmNo = @AdmNo - (@secondDigit * 1000)
+
+	set @thirdDigit = @AdmNo / 100
+	set @AdmNo = @AdmNo - (@thirdDigit * 100)
+
+	set @fourthDigit = @AdmNo / 10
+	set @AdmNo = @AdmNo - (@fourthDigit * 10)
+
+	set @fifthDigit = @AdmNo
+
+	set @checkDigit = 11 - ((@firstDigit * 6 + @secondDigit * 5 + @thirdDigit * 4 + @fourthDigit * 3 + @fifthDigit * 2) % 11)
+
+	print 'Your check digit for admission number ' + cast(@AdmNoBackup as char(5)) + ' is ' + cast(@checkDigit as char(1))
+end
+go
+
+exec validate_student 12345
+
+-- MST TRIGGER
+
+create table enrollment
+(	studno	varchar(7),
+	studname varchar(30),
+	dateenrolled date)
+
+insert into enrollment
+values
+('2', 'Mary Ana', '05 Apr 2016')
+
+select * from enrollment
+
+create table audit_change
+(	studno varchar(7),
+	olddate date,
+	newdate date,
+	updatedate date)
+
+select * from audit_change
+
+create trigger audit_trigger
+on enrollment
+after update
+as
+	insert into audit_change
+		select i.studno, d.dateenrolled, i.dateenrolled, getDate()
+		from inserted i, deleted d
+		where i.studno = d.studno
+
+update enrollment
+set dateenrolled = '01 Apr 2001'
+where studno = '1'
