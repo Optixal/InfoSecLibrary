@@ -1,6 +1,8 @@
 #!/bin/bash
-# Sample run and build docker script for a python server
+# Sample run and build docker script
 
-touch requirements.txt
-docker build -t helloworld .
-docker run -dt -p 6969:6969 --name helloworld helloworld
+SERVICE="helloworld"
+PORT=6969
+
+touch requirements.txt # For python images
+sudo docker build -t $SERVICE . && sudo docker run -dt -p $PORT:$PORT --name $SERVICE $SERVICE
