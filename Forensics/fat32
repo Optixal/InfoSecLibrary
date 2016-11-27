@@ -1,0 +1,47 @@
+
+Root Sector (Start Sector 63)
+Sector Size: 1
+
+Reserved Area (Start Sector 64)
+Sector Size: Size of Reserved Area [b14-15]
+
+FAT
+Sector Size: Number of FATs [b16] * Size of each FAT [b22-23]
+
+Root Directory
+Sector Size: Maximum Number of Files [b17-18] * 32 bytes / Bytes Per Sector [b11-12]
+
+Data
+Measured in clusters
+FIRST CLUSTER OF DATA BLOCK IS 2
+
+FAT example:
+    2 - 3
+    3 - 4
+    4 - 0xFFF (Terminator)
+    5 - 0 (Available, Deleted)
+Note: When deleting a file, marks 0 from terminator backwards (recursion)
+
+Root Directory example:
+    - File Name: hello-world.txt
+	- Starting cluster [b26-27 (offset from first character of filename)]: 4 (in the data block)
+	- File Size [b28-31 (offset from first character of filename]: 92 bytes
+Note: To mark file as available (deleting), start of file name modified to 0xE5
+Note: To mark file as unallocated, start of file name is 0x00
+
+*** IMPORTANT ***
+To find what sector hello-world.txt is located at:
+Start of Data block + Sector Offset of File
+= (Boot Sector + Reserved Area Sectors + FAT + Root Dir) + ((Start Cluster - 2 * Sectors Per Cluster)
+= (63 + Size of Reserved Area [b14-15] + (Number of FATs [b16] * Size of each FAT [b22-23]) + (Maximum Number of Files [b17-18] * 32 bytes / Bytes Per Sector [b11-12])) + ((Start Cluster - 2) * Sectors Per Cluster [b13])
+
+===========================
+Slack Space Example:
+A file of 5100 bytes is written.
+File system allocates 2 {clusters} with 8 [sectors] of 512 bytes each.
+		    4096                      512 492
+{[===][===][===][===] [===][===][===][===]} {[===][== ][   ][   ] [   ][   ][   ][   ]}
+                                                     ^ ^-----------------------------^
+                                                RAM Slack (20)	Drive Slack (6 * 512 = 3072)
+                                                ^-------------------------^
+                                                     File Slack (3092)
