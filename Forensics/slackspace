@@ -1,0 +1,10 @@
+===========================
+Slack Space Example:
+A file of 5100 bytes is written.
+File system allocates 2 {clusters} with 8 [sectors] of 512 bytes each.
+		    4096                      512 492
+{[===][===][===][===] [===][===][===][===]} {[===][== ][   ][   ] [   ][   ][   ][   ]}
+                                                     ^ ^-----------------------------^
+                                                RAM Slack (20)	Drive Slack (6 * 512 = 3072)
+                                                ^-------------------------^
+                                                     File Slack (3092)
