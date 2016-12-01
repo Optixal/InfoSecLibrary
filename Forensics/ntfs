@@ -1,0 +1,10 @@
+===========================
+NTFS - Finding Data of a File
+
+Find MFT location
+Search for file name: UTF-8 not ASCII (One character 16 bits instead of 8 bits: "H.e.l.l.o...W.o.r.l.d."
+Check whether the file is a valid MFT record (starts with "FILE0") 
+Offset 38 bytes from "FILE0" to reach the first MFT attribute (where the hex value should be 0x10)
+Offset 4 bytes away from the attribute and take the hex value, traverse downwards that amount of bytes from the attribute
+Repeat the above step with the new location until hex 0x80 (data attribute) is reached
+Offset 18 bytes from 0x80, data starts there
