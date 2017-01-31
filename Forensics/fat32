@@ -1,3 +1,5 @@
+===========================
+FAT12/16 and FAT32 (Little Endian) (focus on FAT16)
 
 Root Sector (Start Sector 63)
 Sector Size: 1
