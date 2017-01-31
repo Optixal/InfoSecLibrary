@@ -15,7 +15,7 @@
 9. According to the procedures of Parliament, the Third Reading of a Bill is when **any amendments are inserted following a report from the Committee of the Whole Parliament or Select Committee and the Bill is put to vote**
 10. **Article 9 of the Constitution of the Republic of Singapore** guarantees all person the right to life and the right to personal liberty
 
-## Section B
+## Section B (focussed on punishments)
 
 1. One of the objectives of punishment is reformation and rehabilitation. Explain this objective (5 marks). Discuss if the approach to reformation and rehabilitation is idealistic such that an offender can be truly reformed and rehabilitated (10 marks).
 (Total 15 marks) (Any relevant discussions will also be accepted)
