@@ -15,7 +15,7 @@
 9. According to the procedures of Parliament, the Third Reading of a Bill is when **any amendments are inserted following a report from the Committee of the Whole Parliament or Select Committee and the Bill is put to vote**
 10. **Article 9 of the Constitution of the Republic of Singapore** guarantees all person the right to life and the right to personal liberty
 
-## Section B (focussed on punishments, what are the (4) punishments for?)
+## Section B
 
 1. One of the objectives of punishment is reformation and rehabilitation. Explain this objective (5 marks). Discuss if the approach to reformation and rehabilitation is idealistic such that an offender can be truly reformed and rehabilitated (10 marks).
 (Total 15 marks) (Any relevant discussions will also be accepted)
@@ -52,26 +52,33 @@ Jack had **knowingly** **caused his computer (with Jill's login information) to 
 #### Conclusion
 Michael was liable under Section 3 of the CMCA for accessing SOB's client servicing and banking system.
 #### Punishment (underline fine, jail term and both)
-  * Jack was liable to receive a maximum punishment of:
-  * Section 3 read with Section 9
-    * Fine not exceeding **$100,000**
-    * Jail term not exceeding **20 years**
-    * Or **both**
+* Jack was liable to receive a maximum punishment of:
+* Section 3 read with Section 9
+  * Fine not exceeding **$100,000**
+  * Jail term not exceeding **20 years**
+  * Or **both**
 
 #### Issue (b)
 Was Jack liable under Section 7 of the CMCA for sending 500 emails to his client and causing their email server to breakdown which required more than $15,000 to repair?
 #### Law
-  * Unauthorised Obstruction of Use of Computer
-    * Knowingly
-    * Without authority
-    * Interferes with
-    * Impedes
+* Unauthorised Obstruction of Use of Computer
+  * Knowingly
+  * Without authority
+  * Interferes with
+  * Impedes
 #### Application
 Jack had **knowingly** and **without authority** sent 500 emails to his client which **interfered with** and **impeded** the function of the email server. An example can be seen in **PP v. Tan Cheng Kang (2000)**.
 #### Conclusion
 Jack was liable under Section 7 of the CMCA for sending 500 emails to his client and causing their email server to break.
 #### Punishment
-  * Jack was liable to receive a maximum punishment of:
-    * Fine not exceeding **$50,000**
-    * Jail term not exceeding **7 years**
-    * Or **both**
+* Jack was liable to receive a maximum punishment of:
+  * Fine not exceeding **$50,000**
+  * Jail term not exceeding **7 years**
+  * Or **both**
+
+# Other Notes
+
+## Section B
+* Focussed on punishments, what are the (4) punishments for?
+* CPC, also mentions how to manage **computer** related stuff, look through the slides, see which parts of CPC that deals with computers.
+* Evidence Act, give the best evidence, talking about the weight and admissibility of evidence, so what if all evidences are not good? You give the best.
