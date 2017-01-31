@@ -38,8 +38,10 @@
 ### Question 4
 * (a) Jack accessed SOB's bank, but didn't do anything from there.
 * (b) Emailed bombed his client's computer. (When writing CMCA, no abbreviations)
+
 #### Issue (a)
 Was Jack liable under Section 3 of the CMCA for entering into Singapore Outward Bank's client servicing and banking system (a protected computer) with Jill's login information?
+
 #### Law
 Section 3 of the CMCA:
 * Unaunthorised Access to Computer Material
@@ -47,10 +49,13 @@ Section 3 of the CMCA:
   * Causes a computer to perform any function
   * Securing access
   * Without authority
+
 #### Application (Reference cases: Section 6 rarely used)
 Jack had **knowingly** **caused his computer (with Jill's login information) to perform the function** of **securing access** into Singapore Outward Bank's client servicing and banking system **without authority**. An example can be seen in **PP v. Lim Siong Khee (2001)**.
+
 #### Conclusion
 Michael was liable under Section 3 of the CMCA for accessing SOB's client servicing and banking system.
+
 #### Punishment (underline fine, jail term and both)
 * Jack was liable to receive a maximum punishment of:
 * Section 3 read with Section 9
@@ -60,16 +65,20 @@ Michael was liable under Section 3 of the CMCA for accessing SOB's client servic
 
 #### Issue (b)
 Was Jack liable under Section 7 of the CMCA for sending 500 emails to his client and causing their email server to breakdown which required more than $15,000 to repair?
+
 #### Law
 * Unauthorised Obstruction of Use of Computer
   * Knowingly
   * Without authority
   * Interferes with
   * Impedes
+
 #### Application
 Jack had **knowingly** and **without authority** sent 500 emails to his client which **interfered with** and **impeded** the function of the email server. An example can be seen in **PP v. Tan Cheng Kang (2000)**.
+
 #### Conclusion
 Jack was liable under Section 7 of the CMCA for sending 500 emails to his client and causing their email server to break.
+
 #### Punishment
 * Jack was liable to receive a maximum punishment of:
   * Fine not exceeding **$50,000**
