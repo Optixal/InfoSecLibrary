@@ -5,6 +5,6 @@ File system allocates 2 {clusters} with 8 [sectors] of 512 bytes each.
 		    4096                      512 492
 {[===][===][===][===] [===][===][===][===]} {[===][== ][   ][   ] [   ][   ][   ][   ]}
                                                      ^ ^-----------------------------^
-                                                RAM Slack (20)	Drive Slack (6 * 512 = 3072)
+                                                RAM Slack (20)	File Slack (6 * 512 = 3072)
                                                 ^-------------------------^
-                                                     File Slack (3092)
+                                                     Drive Slack (3092)
