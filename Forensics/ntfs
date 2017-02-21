@@ -10,15 +10,15 @@ Partition - Sector n
 2.  Convert MFT cluster location to sectors (depending on sectors per cluster) + Start Sector Sectors to find MFT from start partition
 3.  Search for file name: Unicode not ASCII (One character 16 bits instead of 8 bits: "H.e.l.l.o...W.o.r.l.d."
 4.  Check whether the file is a valid MFT record (starts with "FILE0") 
-5.  Offset 38 bytes from "FILE0" to reach the first MFT attribute (where the hex value should be 0x10)
-6.  Offset 4 bytes away from the attribute and take the hex value, traverse downwards that amount of bytes (in hex) from the attribute
-7.  Repeat the 6th step with the new location until hex 0x80 (data attribute) is reached
-8.  Offset 8 byte away from 0x80 to check whether it is resident or non-resident file (0x00 - resident, 0x01 - non-resident)
-9a. If resident file, offset 0x18 (24 bytes) from 0x80, data starts there
-9b. If non-resident file, offset 0x40 (64 bytes) from 0x80, data run starts here
+5.  Offset 0x38 from "FILE0" to reach the first MFT attribute (where the hex value should be 0x10)
+6.  Offset 4 bytes from the attribute and take the hex value, traverse downwards that amount of bytes (in hex) from the attribute
+7.  Repeat the 6th step with the new location until value 0x80 (data attribute) is reached
+8.  Offset 8 bytes from 0x80 to check whether it is resident or non-resident file (0x00 - resident, 0x01 - non-resident)
+9a. If resident file, offset 0x18 (24 bytes) from 0x80, actual file data of resident file starts here
+9b. If non-resident file, offset 0x40 (64 bytes) from 0x80, data run of non-resident file starts here
 
 Data Run (3 components) (May vary in size, determine with first component) (Little Endian):
 [32] [B1 07] [8C 8C 00]
-1st component: Size of 2nd (2) and 3rd components (3) - Hence [32] (little endian)
+1st component: Size of 2nd (2 bytes) and 3rd components (3 bytes) - Hence [32] (little endian) (eg. [52] -> 2 bytes for 2nd component, 5 bytes for 3rd component)
 2nd component: Size of the data at 3rd pointer in clusters - [B1 07] -> [07 B1] -> 1969 clusters in this data run
 3rd component: Pointer to the location of the data - [8C 8C 00] -> [00 8C 8C] -> 35980 clusters -> 287840 sectors + Start Sector Sectors -> 287871 sectors from start of disk
