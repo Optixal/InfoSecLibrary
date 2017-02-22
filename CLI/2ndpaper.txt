@@ -1,0 +1,48 @@
+
+Q3 ) section 15A – cybersecurity measures and requirement.
+
+Substantive criminal – actual rules of law that forbids the act, default or conduct considered a crime
+
+Parliament – critical,inquisitorial and financial control
+
+e.g of punishment: Corrective Work Order, judge can order Compensation, probation, reformative 
+
+four objectives of punishment :
+Retribution
+Deterrence
+Incapacitation and incarceration
+Reformation and retribution
+
+Section 39 of CPC 
+
+Section 69 
+Definition of hersay
+Why is there a rule for hearsay?
+
+
+
+Was charles liable under section 7 of the computer misuse and cybersecurity act when he send 400 emails to ahmad which causes his email server to breakdown.
+	Law 
+	Section 7 of the computer misuse and cybersecurity act 
+	Unauthorized obstruction of use of computer
+	Elements:
+	-knowingly
+	-without authorization
+	-interferes with
+	-impedes
+
+	Application
+	Jack had knowingly and without authority send 400 emails to Ahmad which interfered with and impeded the function of his client’s email server. 
+	
+	An example of this case can be seen in PP vs tan cheng kang(2000)
+
+	Conclusion
+	Charles is liable under section 7 of the computer misuse and cybersecurity act for sending 400 emails to Ahmad which causes his email server to break down
+
+	Punishments
+	Section 7 read with section 9(only appears if reading with section 9)
+	Roger was liable to receive a maximum punishment of 
+	Fine not exceeding 50,000 
+	Jail term not exceeding 7 years 
+	Or to both
+
