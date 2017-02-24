@@ -1,0 +1,24 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Name=Terminal Fullscreen
+Comment=Use the command line in fullscreen
+Exec=/usr/bin/gnome-terminal --window --full-screen 
+Icon=utilities-terminal
+Type=Application
+X-GNOME-DocPath=gnome-terminal/index.html
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-terminal
+X-GNOME-Bugzilla-Component=BugBuddyBugs
+X-GNOME-Bugzilla-Version=3.4.1.1
+Categories=GNOME;GTK;Utility;TerminalEmulator;
+StartupNotify=true
+OnlyShowIn=GNOME;Unity;
+Keywords=Run;
+Actions=New
+X-Ubuntu-Gettext-Domain=gnome-terminal
+
+[Desktop Action New]
+Name=New Terminal Fullscreen
+Exec=/usr/bin/gnome-terminal --window --full-screen 
+OnlyShowIn=Unity
