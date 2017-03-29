@@ -1,4 +1,5 @@
 #!/bin/bash
+# Docker install script for Kali 2.0
 
 # update apt-get
 export DEBIAN_FRONTEND="noninteractive"

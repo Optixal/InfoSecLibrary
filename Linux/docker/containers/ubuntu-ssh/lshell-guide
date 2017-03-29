@@ -1,0 +1,10 @@
+chsh john
+# Enter /usr/bin/lshell
+
+# Append these to /etc/lshell.conf
+[Infiltrator]
+allowed        : ['ls','cat','cd','./ClassifiedProprietary.py']
+path           : ['/home']
+home_path      : '/home/Infiltrator'
+
+# Modify /etc/ssh/sshd_config to allow password authentication

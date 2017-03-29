@@ -1,6 +1,0 @@
-Python docker server requires "requirements.txt" to be in working directory.
-
-Python scripts running on OS (Ubuntu) docker server will require the use of sys.stdout.write and flush in place of print:
-def write(data, sep="\n"):
-    sys.stdout.write(data + sep)
-    sys.stdout.flush()
