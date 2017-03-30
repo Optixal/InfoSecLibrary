@@ -13,7 +13,7 @@ def write(data, sep="\n"):
     sys.stdout.flush()
 ```
 
-C programs will require the following statements to be made
+C programs will require the following statements to be made:
 ```c
 setvbuf(stdin, NULL, _IONBF, 0);
 setvbuf(stdout, NULL, _IONBF, 0);

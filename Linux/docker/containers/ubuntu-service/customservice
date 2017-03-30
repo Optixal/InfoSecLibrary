@@ -4,11 +4,10 @@ service sample_service
     socket_type = stream
     protocol    = tcp
     wait        = no
-    user        = forestuser
+    user        = serviceuser
     bind        = 0.0.0.0
-    server      = /home/forestuser/program
+    server      = /home/serviceuser/program
     type        = UNLISTED
-    port        = 6969
-    env         = PYTHON_EGG_CACHE=/opt/eggcache/
+    port        = 8000
 }
 

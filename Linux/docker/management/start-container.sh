@@ -6,4 +6,4 @@ then
     exit 1
 fi
 
-sudo docker rm $1
+sudo docker start $1
