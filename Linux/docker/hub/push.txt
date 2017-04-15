@@ -1,0 +1,4 @@
+docker images   # get image id
+docker tag [id] [user]/[repo]
+docker login
+docker push [user]/[repo]

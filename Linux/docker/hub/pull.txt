@@ -1,0 +1,5 @@
+FROM [user]/[repo]
+# or
+docker run -dt [user]/[repo]
+# or temporary image
+docker run --rm -dt [user]/[repo]
