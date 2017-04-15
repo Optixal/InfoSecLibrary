@@ -1,5 +1,10 @@
+# In Dockerfile
 FROM [user]/[repo]
-# or
+
+# From cmd line (pull/download)
+docker pull [user]/[repo]
+
+# From cmd line (run)
 docker run -dt [user]/[repo]
 # or temporary image
 docker run --rm -dt [user]/[repo]
