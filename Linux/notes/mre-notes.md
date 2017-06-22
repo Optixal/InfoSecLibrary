@@ -82,6 +82,8 @@
     * Save Process Monitor > All Events & CSV > "Log.csv"
     * In ProcDOT, specify Log.csv and out.pcap
     * Check "dumb" and "compressed" and refresh
+        * If graph is to big due to server nodes, unspecify out.pcap
+        * Or create new filter > Session > Server Filter > New > Regex > "\d.+"
     * Analyze graph by looking at registry, file, process, network activity
 4. Analyze with Wireshark
     * Analyze scan by looking at capture packets
