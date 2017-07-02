@@ -21,3 +21,6 @@ setvbuf(stdout, NULL, _IONBF, 0);
 
 For SSH containers, add this to the Dockerfile for login fix. Otherwise user is kicked off after login
 `RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd`
+
+Point /bin/sh symbolic link to /bin/bash. Put it as the first command. This allows the container to source files such as a virtualenv. 
+`RUN rm /bin/sh && ln -s /bin/bash /bin/sh`
