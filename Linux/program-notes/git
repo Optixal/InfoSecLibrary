@@ -1,0 +1,44 @@
+# Download and Update
+git clone [url]		// downloads repository from github
+git pull		// pull new updates from github
+
+# Adding and Commiting to GitHub
+git add .		// adds all content to the "stage" to prepare for commit
+git commit -m "msg"	// makes a commit locally
+git push origin [branch]// pushes commits to github
+
+# Removing Staged Files (After "git add ." and before "git commit")
+git reset
+
+# Branching
+git branch		// displays branches available
+git branch [name]	// creates a new branch
+git branch -D [name]	// deletes a branch
+git checkout [branch]	// changes the branch you're working in
+
+# Creating New Repository
+# First, create new repository in GitHub, without initializing readme file
+echo "# Title" >> README.md
+git init
+git add .
+git commit -m "Init"
+git remote add origin https://github.com/[user]/[newly created repo]
+git push -u origin master
+
+# Remove tracked files that have been added to gitignore
+git rm -r -q --cached .
+git add .
+
+# Convert from password to keys
+git remote set-url origin git@github.com:Optixal/<Project>.git
+
+# Set local username and email
+git config --global user.email "[github email]"
+git config --global user.name "[github username]"
+
+# Revert a Pushed Commit
+git log
+git reset c6fcf2d6ea56ab3933659e33227979984fbee280 # Take the second top most hash
+git add .
+git commit -m 'Completed bla bla'
+git push -f origin master
