@@ -1,0 +1,3 @@
+
+# Find files belonging to root with write and execute permissions given to all users, and either setuid or setgid enabled
+find / -type f -user root \( -perm -2003 -o -perm -4003 \)
