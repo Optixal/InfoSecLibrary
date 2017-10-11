@@ -1,0 +1,12 @@
+# Vanity Gen GPG Key
+scallion --gpg -k 4096 -o C:\key.txt 888$ # generate GPG keypair with ID ending with 888
+
+# Import GPG Key (non-selfsigned as well)
+gpg --import --allow-non-selfsigned-uid key.asc # import private key `key.asc` into GPG keyring
+gpg --edit-key ???
+adduid, [name], [email], [comment], o
+2 # select the old uid with its prefix number
+deluid, y
+1 # select the new uid with its prefix number
+trust, 5, y
+save
