@@ -6,4 +6,4 @@ then
     exit 1
 fi
 
-sudo docker stop $1
+docker stop $1

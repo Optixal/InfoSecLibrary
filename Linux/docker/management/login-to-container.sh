@@ -6,6 +6,6 @@ then
     exit 1
 fi
 
-sudo docker exec -i -t $1 /bin/bash
+docker exec -it $1 /bin/bash
 # or
-# sudo docker attach [name]
+# docker attach [name] # Doesn't work most of the time

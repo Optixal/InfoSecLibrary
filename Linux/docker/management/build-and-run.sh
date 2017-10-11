@@ -1,8 +1,8 @@
 #!/bin/bash
-# Sample run and build docker script
-# Requires Dockerfile
+# Sample run and build docker script, requires Dockerfile
 
 SERVICE="mysqlserver"
 PORT=3306
+MEMORY="64M"
 
-sudo docker build -t $SERVICE . && sudo docker run -dt -p $PORT:$PORT --name $SERVICE $SERVICE
+docker build -t $SERVICE . && docker run -dt -p $PORT:$PORT --restart always --memory $MEMORY --name $SERVICE $SERVICE

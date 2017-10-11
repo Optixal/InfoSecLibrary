@@ -6,4 +6,4 @@ then
     exit 1
 fi
 
-sudo docker rmi $1
+docker rmi $1

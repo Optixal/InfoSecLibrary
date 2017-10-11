@@ -6,8 +6,6 @@ then
     exit 1
 fi
 
-sudo docker stop $1
-sudo docker rm $1 && sudo docker rmi $1
-
-echo "Successfully deleted $1!"
+docker stop $1
+docker rm $1 && docker rmi $1
 
