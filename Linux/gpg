@@ -3,10 +3,17 @@ scallion --gpg -k 4096 -o C:\key.txt 888$ # generate GPG keypair with ID ending 
 
 # Import GPG Key (non-selfsigned as well)
 gpg --import --allow-non-selfsigned-uid key.asc # import private key `key.asc` into GPG keyring
-gpg --edit-key ???
+gpg --edit-key scallion # edit the key with 'scallion' in its uid
 adduid, [name], [email], [comment], o
-2 # select the old uid with its prefix number
+1 # select the old uid with its prefix number
 deluid, y
 1 # select the new uid with its prefix number
 trust, 5, y
+passwd # encrypt private key
 save
+
+# Export GPG Public Key for Github Usage
+gpg --armor --export [key id]
+
+# Configure Git to Use New Key
+git config --global user.signingkey [key id]
