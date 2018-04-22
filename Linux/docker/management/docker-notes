@@ -1,0 +1,14 @@
+docker run              # run a new container instance from an image, if image not found, download auto
+* -it --rm [image]      # temporary, interactive container
+* -it [image]           # interactive container
+* -dt [image]           # detached container, used most of the time
+docker images           # list images
+docker ps               # list containers
+* -a                    # list all containers
+* -s                    # list started containers
+docker exec -it [container] [cmd] # connect to a computer
+docker rm [container]   # delete container
+docker rmi [image]      # delete image
+
+Notes
+dockerfile (blueprint) -> image
