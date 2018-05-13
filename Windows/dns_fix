@@ -1,0 +1,8 @@
+ipconfig /flushdns
+net stop dnscache
+net start dnscache
+
+If still cannot:
+netsh winsock reset catalog
+netsh int ip reset reset.log
+Reboot.
